@@ -17,24 +17,25 @@ require.config({
         }
     }
 });
-require(['ROT', 'lodash', 'app'], function (ROT, _, App) {
-    var app;
+require(['ROT', 'lodash', 'app', "systems/display", "systems/input"], function (ROT, _, App, Display, Input) {
+    var app, display, input;
 
     if (!ROT.isSupported()) {
         alert("The rot.js library isn't supported in your browser.");
     } else {
-        app = new App();
-        document.body.appendChild(app.getDisplay().getContainer());
-        _.each(['keydown', 'keyup'], function (event) {
+        display = new Display();
+        input = new Input();
+        app = new App(display, input);
+        input.bindApp(app);
+
+        _.each(input.eventTypes, function (event) {
             window.addEventListener(event, function (e) {
+                input.handle(event, e);
                 // When an event is received, send it to the
                 // screen if there is one
-                var screen = app.getCurrentScreen();
-                if (screen) {
-                    // Send the event type and data to the screen
-                    screen.handleInput(event, e);
-                }
             });
         });
+
+        document.body.appendChild(app.getDisplay().getContainer());
     }
 });

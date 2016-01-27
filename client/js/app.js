@@ -1,10 +1,10 @@
-define(["Class", "systems/display", "systems/input", "screens/start"], function (Class, Display, Input, StartScreen) {
-    var display, currentScreen;
-    var input = new Input();
+define(["Class", "screens/start"], function (Class, StartScreen) {
+    var display, input, currentScreen;
 
     return Class.extend({
-        init: function () {
-            display = new Display();
+        init: function (displayInstance, inputInstance) {
+            display = displayInstance;
+            input = inputInstance;
             this.switchScreen(new StartScreen(this, input));
         },
         getDisplay: function () {
