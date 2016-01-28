@@ -1,25 +1,24 @@
 define(["Class", "screens/start"], function (Class, StartScreen) {
-    var display, input, currentScreen;
-
     return Class.extend({
         init: function (displayInstance, inputInstance) {
-            display = displayInstance;
-            input = inputInstance;
-            this.switchScreen(new StartScreen(this, input));
+            this.display = displayInstance;
+            this.input = inputInstance;
+            this.currentScreen = null;
+            this.switchScreen(new StartScreen(this, this.input));
         },
         getDisplay: function () {
-            return display;
+            return this.display;
         },
         getCurrentScreen: function () {
-            return currentScreen;
+            return this.currentScreen;
         },
         switchScreen: function (newScreen) {
-            if (currentScreen) {
-                currentScreen.exit();
+            if (this.currentScreen) {
+                this.currentScreen.exit();
             }
 
-            currentScreen = newScreen;
-            currentScreen.enter();
+            this.currentScreen = newScreen;
+            this.currentScreen.enter();
         }
     })
 });

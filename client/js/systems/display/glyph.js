@@ -1,20 +1,18 @@
 define(['Class', 'systems/display/color'], function (Class, color) {
-    var chr, foreground, background;
-
     return Class.extend({
         init: function (char, fore, back) {
-            chr = char || '?';
-            foreground = fore || color.white;
-            background = back || color.black;
+            this.chr = char || '?';
+            this.foreground = fore || color.white;
+            this.background = back || color.black;
         },
         getChar: function () {
-            return chr;
+            return this.chr;
         },
         getForeground: function () {
-            return foreground;
+            return this.foreground;
         },
         getBackground: function () {
-            return background;
+            return this.background;
         }
     });
 });

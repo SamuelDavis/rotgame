@@ -1,24 +1,22 @@
 define(['Class', 'ROT', 'mapping/tile'], function (Class, ROT, Tile) {
-    var tiles, width, height;
-
     var Map = Class.extend({
         init: function (tileMap) {
-            tiles = tileMap;
-            width = tileMap[0].length;
-            height = tileMap.length;
+            this.tiles = tileMap;
+            this.width = tileMap[0].length;
+            this.height = tileMap.length;
         },
         getWidth: function () {
-            return width;
+            return this.width;
         },
         getHeight: function () {
-            return height;
+            return this.height;
         },
         getTile: function (x, y) {
-            if (x < 0 || x > width || y < 0 || y > height) {
+            if (x < 0 || x >= this.width || y < 0 || y >= this.height) {
                 return Tile.NULL();
             }
 
-            return tiles[y][x] || Tile.NULL();
+            return this.tiles[y][x] || Tile.NULL();
         }
     });
     Map.generate = function (width, height) {
