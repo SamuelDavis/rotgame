@@ -3,8 +3,6 @@ define(["Class"], function (Class) {
         init: function (game, input) {
             this.game = game;
             this.input = input;
-
-            console.log(this);
         },
         enter: function () {
             console.log("Enter screen");

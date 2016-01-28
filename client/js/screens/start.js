@@ -1,4 +1,4 @@
-define(["screens/screen", "screens/play"], function (Screen, Play) {
+define(["screens/screen", "screens/play", "mapping/map"], function (Screen, Play, Map) {
     return Screen.extend({
         enter: function () {
             console.log("Enter start screen");
@@ -16,7 +16,8 @@ define(["screens/screen", "screens/play"], function (Screen, Play) {
                 case "keydown":
                     switch (input.keyCode) {
                         case this.input.getMap().enter:
-                            this.game.switchScreen(new Play(this.game, this.input));
+                            var playScreen = new Play(this.game, this.input, Map.Cellular());
+                            this.game.switchScreen(playScreen);
                             break;
                     }
                     return;

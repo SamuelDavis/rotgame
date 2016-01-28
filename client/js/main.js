@@ -17,7 +17,7 @@ require.config({
         }
     }
 });
-require(['ROT', 'lodash', 'app', "systems/display", "systems/input"], function (ROT, _, App, Display, Input) {
+require(['ROT', 'lodash', 'app', "systems/display/display", "systems/input"], function (ROT, _, App, Display, Input) {
     var app, display, input;
 
     if (!ROT.isSupported()) {
@@ -31,8 +31,6 @@ require(['ROT', 'lodash', 'app', "systems/display", "systems/input"], function (
         _.each(input.eventTypes, function (event) {
             window.addEventListener(event, function (e) {
                 input.handle(event, e);
-                // When an event is received, send it to the
-                // screen if there is one
             });
         });
 
