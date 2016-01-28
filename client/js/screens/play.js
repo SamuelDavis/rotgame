@@ -33,6 +33,14 @@ define(["screens/screen", "ROT"], function (Screen) {
                     );
                 }
             }
+
+            display.draw(
+                Math.floor(screenWidth / 2),
+                Math.floor(screenHeight / 2),
+                '@',
+                'goldenrod',
+                'black'
+            );
         },
         handleInput: function (type, input) {
             console.log("Handle play input: " + type + ' :: ' + input.keyCode);

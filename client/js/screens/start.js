@@ -16,7 +16,7 @@ define(["screens/screen", "screens/play", "../mapping/map"], function (Screen, P
                 case "keydown":
                     switch (input.keyCode) {
                         case this.input.keyMap.enter:
-                            var playScreen = new Play(this.game, this.input, Map.Cellular(160, 50));
+                            var playScreen = new Play(this.game, this.input, Map.Cellular(this.game.getWidth() * 2, this.game.getHeight() * 2));
                             this.game.switchScreen(playScreen);
                             break;
                     }
